@@ -7,15 +7,25 @@ import {
   Navigate,
 } from 'react-router-dom';
 
-import Login from '../pages/login/index';
-import Home from '../pages/home/index';
-import Play from '../pages/play/index';
-import Goods from '../pages/goods/index';
-import Team from '../pages/team/index';
+/**
+ * 引入 react-redux
+ */
+import {Provider} from 'react-redux'
+
+// 引入store
+import store from '../store/index'
+
+import Login from '../pages/Login/index';
+import Home from '../pages/Home/index';
+import Play from '../pages/Play/index';
+import Goods from '../pages/Goods/index';
+import Team from '../pages/Team/index';
+
 
 function App() {
   return (
-    <Router>
+    <Provider store={store}>
+      <Router>
       <Routes>
         <Route path="/" element={<Navigate to="/login" />}></Route>
         <Route path="/login" element={<Login />}></Route>
@@ -25,7 +35,8 @@ function App() {
           <Route path="/home/goods" element={<Goods />}></Route>
         </Route>
       </Routes>
-    </Router>
+      </Router>
+    </Provider>
   );
 }
 
